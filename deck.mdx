@@ -4,6 +4,9 @@ import {
   Step,
 } from "code-surfer";
 import { github, vsDark } from "@code-surfer/themes";
+import { Split, Horizontal } from 'mdx-deck'
+
+
 export const theme = vsDark;
 
 # ReactJS Crash Course
@@ -41,9 +44,23 @@ import Counter from './components/Counter'
 
 ---
 
+import Hello from './components/part1'
 
+<Hello />
 
+<CodeSurfer>
 
+```js
+class Hello extends React.Component {
+  render() {
+    return <h1>Hello world!</h1>;
+  }
+}
+```
+
+</CodeSurfer>
+
+---
 
 # Hello 👋
 
