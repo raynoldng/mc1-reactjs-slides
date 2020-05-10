@@ -297,8 +297,274 @@ class StatefulApp extends React.Component {
 const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 ```
 
+```jsx subtitle="Conditional rendering" 13
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+ 
+        <button onClick={
+          () => this.setState(state => ({ isShow: !state.isShow }))
+        } type="button">
+          Toggle Show
+        </button>
+      </div>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+```jsx title="Can you pass state as props to children" 19,29,30
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+ 
+  toggleShow = () => {
+    this.setState(state => ({ isShow: !state.isShow }));
+  };
+ 
+  render() {
+    const greeting = 'Now you see me';
+ 
+    return (
+      <div>
+        <Greeting greeting={greeting} isShow={this.state.isShow} />
+ 
+        <button onClick={
+          () => this.setState(state => ({ isShow: !state.isShow }))
+        } type="button">
+          Toggle Show
+        </button>
+      </div>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting, isShow }) =>
+  isShow ? <h1>{greeting}</h1> : null;
+```
+
 </CodeSurfer>
 
+---
+
+# How to pass props from child to parent?
+
+<Steps>
+NO  😭 , there is no way to pass props from a child to a parent component
+
+Lets try to add a Button component for toggling
+</Steps>
+
+---
+
+<CodeSurfer>
+
+```jsx
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+ 
+        <button onClick={
+          () => this.setState(state => ({ isShow: !state.isShow }))
+        } type="button">
+          Toggle Show
+        </button>
+      </div>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+```jsx title="Add Button Component"
+class StatefulApp extends React.Component {
+  constructor(props) {
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {isShow ? <Greeting greeting={greeting} /> : null}
+        <Button />
+      </div>
+    );
+  }
+}
+
+class Button extends Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+ 
+  toggleShow = () => {
+    this.setState(state => ({ isShow: !state.isShow }));
+  };
+ 
+  render() {
+    return (
+      <button onClick={this.toggleShow} type="button">
+        Toggle Show
+      </button>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+```jsx subtitle="❌ Button cannot pass isShow as props to App ❌"  6[10:15],7[10:15]
+class StatefulApp extends React.Component {
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {isShow ? <Greeting greeting={greeting} /> : null}
+        <Button />
+      </div>
+    );
+  }
+}
+
+class Button extends Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+ 
+  toggleShow = () => {
+    this.setState(state => ({ isShow: !state.isShow }));
+  };
+ 
+  render() {
+    return (
+      <button onClick={this.toggleShow} type="button">
+        Toggle Show
+      </button>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+
+```jsx title="Only solution is to lift the state up"
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+ 
+  toggleShow = () => {
+    this.setState(state => ({ isShow: !state.isShow }));
+  };
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        <Button onClick={this.toggleShow} />
+      </div>
+    );
+  }
+}
+
+class Button extends Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+ 
+  toggleShow = () => {
+    this.setState(state => ({ isShow: !state.isShow }));
+  };
+ 
+  render() {
+    return (
+      <button onClick={this.toggleShow} type="button">
+        Toggle Show
+      </button>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+```jsx subtitle="App component passes down a function in the props to the Button "
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+ 
+  toggleShow = () => {
+    this.setState(state => ({ isShow: !state.isShow }));
+  };
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        <Button onClick={this.toggleShow} />
+      </div>
+    );
+  }
+}
+
+const Button = ({ onClick }) => (
+  <button onClick={onClick} type="button">
+    Toggle Show
+  </button>
+);
+
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+</CodeSurfer>
 
 ---
 
