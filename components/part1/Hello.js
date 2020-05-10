@@ -5,7 +5,3 @@ export default class Hello extends React.Component {
     return <h1>Hello world!</h1>;
   }
 }
-
-export const functionalHello = () => {
-  return <h1>Hello functional world!</h1>;
-}

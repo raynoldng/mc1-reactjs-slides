@@ -5,6 +5,7 @@ import {
 } from "code-surfer";
 import { github, vsDark } from "@code-surfer/themes";
 import { Split, Horizontal } from 'mdx-deck'
+import Content from './layouts/content'
 
 
 export const theme = vsDark;
@@ -44,7 +45,7 @@ import Counter from './components/Counter'
 
 ---
 
-import Hello from './components/part1'
+import Hello from './components/part1/Hello'
 
 <Hello />
 
@@ -59,6 +60,157 @@ class Hello extends React.Component {
 ```
 
 </CodeSurfer>
+
+---
+
+import FunctionalHello from './components/part1/FunctionalHello'
+
+<FunctionalHello />
+
+<CodeSurfer>
+
+```js file=./components/part1/FunctionalHello.js
+```
+
+</CodeSurfer>
+
+---
+
+import ComposedApp from './components/part1/ComposedApp'
+
+<ComposedApp />
+
+<CodeSurfer>
+
+```js file=./components/part1/ComposedApp.js
+```
+
+</CodeSurfer>
+
+---
+
+# Handling Data
+
+1. props: external, not controlled by the component itself, passed from parents
+2. state: private, and controllable from the component itself
+
+
+---
+
+# Passing Data with Props
+
+<CodeSurfer>
+
+```jsx subtitle="Before"
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Greeting />
+      </div>
+    );
+  }
+}
+
+class Greeting extends React.Component {
+  render() {
+    const greeting = 'Welcome to React';
+    return <h1>{greeting}</h1>;
+  }
+}
+```
+
+```jsx subtitle="Want to pass props from App to Greeting" 5,14
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Greeting />
+      </div>
+    );
+  }
+}
+
+class Greeting extends React.Component {
+  render() {
+    const greeting = 'Welcome to React';
+    return <h1>{greeting}</h1>;
+  }
+}
+```
+
+```jsx subtitle="After"
+class App extends React.Component {
+  render() {
+    const greeting = 'Welcome to React';
+    return (
+      <div>
+        <Greeting greeting={greeting} />
+      </div>
+    );
+  }
+}
+ 
+class Greeting extends React.Component {
+  render() {
+    return <h1>{this.props.greeting}</h1>
+  }
+}
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx title="Passing props for functionl components"
+class App extends Component {
+  render() {
+    const greeting = 'Welcome to React';
+ 
+    return (
+      <div>
+        <Greeting greeting={greeting} />
+      </div>
+    );
+  }
+}
+ 
+const Greeting = props => <h1>{props.greeting}</h1>;
+```
+
+```jsx subtitle="Props are received in the function signature as props" 13
+class App extends Component {
+  render() {
+    const greeting = 'Welcome to React';
+ 
+    return (
+      <div>
+        <Greeting greeting={greeting} />
+      </div>
+    );
+  }
+}
+ 
+const Greeting = props => <h1>{props.greeting}</h1>;
+```
+
+</CodeSurfer>
+
+---
+
+<Content>
+
+## Props are read only and do not make components interactive. Need state for that
+
+</Content>
+
+---
+
+import StatefulApp from './components/part1/StatefulApp'
+
+<StatefulApp />
 
 ---
 
