@@ -568,6 +568,54 @@ const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 
 ---
 
+<CodeSurfer>
+
+```jsx title="Composing React Components with children prop"
+class StatefulApp extends React.Component {
+  ...
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        <Button onClick={this.toggleShow} />
+      </div>
+    );
+  }
+}
+
+const Button = ({ onClick }) => (
+  <button onClick={onClick} type="button">
+    Toggle Show
+  </button>
+);
+```
+
+```jsx subtitle="You can put anything between the closing tags"
+class StatefulApp extends React.Component {
+  ...
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        <Button onClick={this.toggleShow}>Toggle Show</Button>
+      </div>
+    );
+  }
+}
+ 
+const Button = ({ onClick, children }) => (
+  <button onClick={onClick} type="button">
+    {children}
+  </button>
+);
+```
+
+</CodeSurfer>
+
+---
+
 # Hello 👋
 
 You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
