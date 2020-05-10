@@ -204,13 +204,45 @@ const Greeting = props => <h1>{props.greeting}</h1>;
 
 ## Props are read only and do not make components interactive. Need state for that
 
+import StatefulApp from './components/part1/StatefulApp'
+
+<StatefulApp />
 </Content>
 
 ---
 
-import StatefulApp from './components/part1/StatefulApp'
+<CodeSurfer>
 
-<StatefulApp />
+```jsx
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+ 
+        <button onClick={
+          () => this.setState(state => ({ isShow: !state.isShow }))
+        } type="button">
+          Toggle Show
+        </button>
+      </div>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+</CodeSurfer>
+
 
 ---
 

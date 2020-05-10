@@ -1,6 +1,6 @@
 import React from 'react';
-
-export default class StatefulApp extends React.Component {
+ 
+class StatefulApp extends React.Component {
   constructor(props) {
     super(props);
  
@@ -10,7 +10,7 @@ export default class StatefulApp extends React.Component {
   }
  
   render() {
-    const greeting = 'Welcome to React';
+    const greeting = 'Now you see me';
     return (
       <div>
         {this.state.isShow ? <Greeting greeting={greeting} /> : null}
@@ -26,3 +26,5 @@ export default class StatefulApp extends React.Component {
 }
  
 const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+
+export default StatefulApp;
