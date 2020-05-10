@@ -616,6 +616,132 @@ const Button = ({ onClick, children }) => (
 
 ---
 
+<CodeSurfer>
+
+```jsx titie="Passing Components as Props"
+const User = ({ user }) => (
+  <Profile user={user}>
+    <AvatarRound user={user} />
+  </Profile>
+);
+ 
+const Profile = ({ user, children }) => (
+  <div className="profile">
+    <div>{children}</div>
+    <div>
+      <p>{user.name}</p>
+    </div>
+  </div>
+);
+ 
+const AvatarRound = ({ user }) => (
+  <img className="round" alt="avatar" src={user.avatarUrl} />
+);
+```
+
+```jsx subtitle="Use regular props if passing more than one component"
+const User = ({ user }) => (
+  <Profile
+    user={user}
+    avatar={<AvatarRound user={user} />}
+    biography={<BiographyFat user={user} />}
+  />
+);
+ 
+const Profile = ({ user, avatar, biography }) => (
+  <div className="profile">
+    <div>{avatar}</div>
+    <div>
+      <p>{user.name}</p>
+      {biography}
+    </div>
+  </div>
+);
+ 
+const AvatarRound = ({ user }) => (
+  <img className="round" alt="avatar" src={user.avatarUrl} />
+);
+ 
+const BiographyFat = ({ user }) => (
+  <p className="fat">{user.biography}</p>
+);
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx title="Slot Pattern" 
+const User = ({ user }) => (
+  <Profile
+    user={user}
+    avatar={<AvatarRound user={user} />}
+    biography={<BiographyFat user={user} />}
+  />
+);
+ 
+const Profile = ({ user, avatar, biography }) => (
+  <div className="profile">
+    <div>{avatar}</div>
+    <div>
+      <p>{user.name}</p>
+      {biography}
+    </div>
+  </div>
+);
+ 
+const AvatarRound = ({ user }) => (
+  <img className="round" alt="avatar" src={user.avatarUrl} />
+);
+ 
+const BiographyFat = ({ user }) => (
+  <p className="fat">{user.biography}</p>
+);
+```
+
+```jsx subtitle="Can exchange components dynamically"
+const User = ({ user }) => (
+  <Profile
+    user={user}
+    avatar={<AvatarSquare user={user} />}
+    biography={<BiographyItalic user={user} />}
+  />
+);
+ 
+const Profile = ({ user, avatar, biography }) => (
+  <div className="profile">
+    <div>{avatar}</div>
+    <div>
+      <p>{user.name}</p>
+      {biography}
+    </div>
+  </div>
+);
+ 
+const AvatarSquare = ({ user }) => (
+  <img className="square" alt="avatar" src={user.avatarUrl} />
+);
+ 
+const BiographyItalic = ({ user }) => (
+  <p className="italic">{user.biography}</p>
+);
+
+const AvatarRound = ({ user }) => (
+  <img className="round" alt="avatar" src={user.avatarUrl} />
+);
+ 
+const BiographyFat = ({ user }) => (
+  <p className="fat">{user.biography}</p>
+);
+```
+
+</CodeSurfer>
+
+
+---
+
 # Hello 👋
 
 You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
