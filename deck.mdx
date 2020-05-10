@@ -404,7 +404,7 @@ class StatefulApp extends React.Component {
 const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 ```
 
-```jsx title="Add Button Component"
+```jsx title="Try to Add Button Component"
 class StatefulApp extends React.Component {
   constructor(props) {
   render() {
@@ -618,7 +618,7 @@ const Button = ({ onClick, children }) => (
 
 <CodeSurfer>
 
-```jsx titie="Passing Components as Props"
+```jsx title="Passing Components as Props"
 const User = ({ user }) => (
   <Profile user={user}>
     <AvatarRound user={user} />
@@ -742,9 +742,26 @@ const BiographyFat = ({ user }) => (
 
 ---
 
-# Hello 👋
+# Prop Drilling
 
-You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
+import prop_drilling from './images/prop-drilling.png'
+
+<img width="1200px" height="1200px" src={prop_drilling} />
+
+<Notes>
+  Image source: https://medium.com/@nguyencaophung/react-from-prop-drilling-to-use-hook-to-pass-data-in-app-3e3caad6a65f
+</Notes>
+
+---
+
+# Use Context to Share Data
+
+Read more [here](https://medium.com/@nguyencaophung/react-from-prop-drilling-to-use-hook-to-pass-data-in-app-3e3caad6a65f)
+
+import context_to_share_data from './images/context-to-share-data.png'
+
+<img width="1200px" height="1200px" src={context_to_share_data} />
+
 
 ---
 
