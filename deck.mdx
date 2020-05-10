@@ -241,6 +241,62 @@ class StatefulApp extends React.Component {
 const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 ```
 
+```jsx subtitle="Set up state" 5:7
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+ 
+        <button onClick={
+          () => this.setState(state => ({ isShow: !state.isShow }))
+        } type="button">
+          Toggle Show
+        </button>
+      </div>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
+```jsx subtitle="Update state onClick" 15:17
+class StatefulApp extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: true,
+    };
+  }
+  render() {
+    const greeting = 'Now you see me';
+    return (
+      <div>
+        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+ 
+        <button onClick={
+          () => this.setState(state => ({ isShow: !state.isShow }))
+        } type="button">
+          Toggle Show
+        </button>
+      </div>
+    );
+  }
+}
+ 
+const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
+```
+
 </CodeSurfer>
 
 
