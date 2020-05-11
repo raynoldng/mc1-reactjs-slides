@@ -2,11 +2,13 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "mdx-deck deck.mdx",
+    "start": "mdx-deck --no-html deck.mdx",
     "build": "mdx-deck build deck.mdx",
     "test": "echo \"there are no tests\""
   },
   "devDependencies": {
+    "style-loader": "^0.22.1",
+    "css-loader": "^1.0.0",
     "code-surfer": "3.1.0",
     "mdx-deck": "3.0.13",
     "raw-loader": "^1.0.0",
