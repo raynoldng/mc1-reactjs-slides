@@ -993,6 +993,128 @@ serviceWorker.unregister();
 
 </CodeSurferColumns>
 
+---
 
+import layout from './images/layout.png'
+
+<img width="1200px" height="1200px" src={layout} />
 
 ---
+
+import layout_annotated from './images/layout-annotated.png'
+
+<img width="1200px" height="1200px" src={layout_annotated} />
+
+---
+
+import form from './images/form.png'
+
+<img width="1200px" height="1200px" src={form} />
+
+---
+
+<CodeSurfer>
+
+```jsx file=./frontend_src/NavBar/NavBar.js subtitle="Functional as stateless" title="Navigation Bar"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <p>Work in progress.</p>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+```jsx subtitle="Add navigation bar in"
+import React, { Component } from 'react';
+import NavBar from './NavBar/NavBar';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <p>Work in progress.</p>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+</CodeSurfer>
+
+---
+
+import fail_layout from './images/failed-layout.png'
+
+<img width="750px" height="750px" src={fail_layout} />
+
+---
+
+import devtools from './images/devtools.png'
+
+<img width="750px" height="750px" src={devtools} />
+
+--- 
+
+import fixed_layout from './images/fixed-layout.png'
+
+<img width="750px" height="750px" src={fixed_layout} />
+
+---
+
+<CodeSurfer>
+
+```css title="Add top margin to body"
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+```
+
+```css title="Add top margin to body"
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 100px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+```
+
+</CodeSurfer>
