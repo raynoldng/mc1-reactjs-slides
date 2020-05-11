@@ -920,3 +920,79 @@ export default App;
 ```
 
 </CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx title="Import BrowserRouter" 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
+```
+
+```jsx title="Import BrowserRouter" 3,9:11
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurferColumns>
+
+<Step>
+
+```html file=./frontend_src/index.html
+```
+
+```js file=./frontend_src/index.js
+```
+
+</Step>
+
+<Step subtitle="which HTML element React renders your app">
+
+```html file=./frontend_src/index.html 31
+```
+
+```js file=./frontend_src/index.js 11
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+
+
+---
