@@ -769,5 +769,154 @@ import context_to_share_data from './images/context-to-share-data.png'
 
 ---
 
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)
+# Part 2: Putting it together
+
+## Let's try to to build a simple Q&A webapp that relies on a backend API
+
+<a href="https://ancient-castle-17079.herokuapp.com/" target="_blank">Working Demo</a>
+
+(Based on [React Tutorial: Building and Securing Your First App](https://auth0.com/blog/react-tutorial-building-and-securing-your-first-app/#What-You-Will-Build-with-React))
+
+---
+
+import vorstock from './images/vorstock.png'
+
+# Achievement Level: Vostok (almost)
+
+<img width="400px" height="400px" src={vorstock} />
+
+- Web application with a database backend.
+- Any type of application.
+- A small set of core (CRUD) features.
+- A good set of core features and a small set of extensions.
+- ~~Basic testing~~
+- ~~Basic documentation~~
+
+---
+
+# Full Stack Developement
+
+import full_stack from './images/full-stack.png'
+
+<img width="1000px" height="1000px" src={full_stack} />
+
+---
+
+# Backend APIs
+
+- `GET /` - retrieve all questions
+- `GET /:id` - get a specific question 
+- `POST /` - insert a new question 
+- `POST /answer/:id` - insert a new answer to the question 
+
+---
+
+# `GET /` - retrieve all questions
+
+Run in terminal:
+
+```bash
+curl https://limitless-sands-43875.herokuapp.com
+```
+
+```
+[{
+  'id': 1,
+  'title': 'How do I make a sandwich?',
+  'description': 'Grab food is too expensive and I no $$',
+  'answers': 1,
+}]
+```
+
+---
+
+# `GET /:id` - get a specific question
+
+```bash
+curl https://limitless-sands-43875.herokuapp.com/1
+```
+
+```
+{
+  'id': 1,
+  'title': 'How do I make a sandwich?',
+  'description': 'Grab food is too expensive and I no $$',
+  'answers': 1,
+}
+```
+
+---
+
+# `POST /` - insert a new question 
+
+```bash
+curl -X POST -H 'Content-Type: application/json' -d '{
+  "title": "How do I make a sandwich?",
+  "description": "Grab food is too expensive and I no $$"
+}' https://limitless-sands-43875.herokuapp.com/
+```
+
+---
+
+# `POST /answer/:id` 
+
+```bash
+curl -X POST -H 'Content-Type: application/json' -d '{
+  "answer": "Have you tried googling it?"
+}' https://limitless-sands-43875.herokuapp.com/answer/1
+```
+
+---
+
+# Set up your React Application
+
+```bash
+npx create-react-app frontend
+# move into the new directory
+cd frontend
+# start your react app
+npm start
+```
+
+---
+
+import react_app from './images/react-app.png'
+
+Go to `localhost:3000` on your web browser
+
+<img width="750px" height="750px" src={react_app} />
+
+---
+
+# Install additional libraries
+
+```bash
+npm i react-router react-router-dom
+```
+- `react-router`: seamless navigation
+- `react-router-dom`: provides DOM navigation bindings for React Router
+- learn more about them [here](https://reacttraining.com/react-router/web/guides/quick-start)
+
+---
+
+`./src/App.js`
+
+<CodeSurfer>
+
+```jsx
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <p>Work in progress.</p>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+</CodeSurfer>
