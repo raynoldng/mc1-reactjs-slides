@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { HOSTNAME } from '../contants'
+import { HOSTNAME } from '../constants'
 
 
 const NewQuestionCard = () => (

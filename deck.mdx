@@ -34,17 +34,6 @@ import everything_is_a_component from './images/everything-is-a-component.png'
 
 ---
 
-
-# DELETE THIS
-
-Example of inline React
-
-import Counter from './components/Counter'
-
-<Counter />
-
----
-
 import Hello from './components/part1/Hello'
 
 <Hello />
@@ -208,6 +197,12 @@ Source: https://www.robinwieruch.de/react-pass-props-to-component
 
 ## Props are read only and do not make components interactive. Need state for that
 
+import Counter from './components/Counter'
+
+<Counter />
+
+---
+
 import StatefulApp from './components/part1/StatefulApp'
 
 <StatefulApp />
@@ -245,7 +240,7 @@ class StatefulApp extends React.Component {
 const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 ```
 
-```jsx subtitle="Set up state" 5:7
+```jsx subtitle="Set up state in constructor" 5:7
 class StatefulApp extends React.Component {
   constructor(props) {
     super(props);
@@ -329,7 +324,7 @@ class StatefulApp extends React.Component {
 const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 ```
 
-```jsx title="Can you pass state as props to children" 19,29,30
+```jsx title="You can pass state as props to children" 19,29,30
 class StatefulApp extends React.Component {
   constructor(props) {
     super(props);
@@ -362,6 +357,21 @@ class StatefulApp extends React.Component {
  
 const Greeting = ({ greeting, isShow }) =>
   isShow ? <h1>{greeting}</h1> : null;
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx file=./components/Counter.js
+```
+
+```jsx file=./components/Counter.js 4:6,17
+```
+
+```jsx file=./components/Counter.js 12:16 subtitle="Styling react compoments with inline CSS"
 ```
 
 </CodeSurfer>
@@ -1121,6 +1131,14 @@ code {
 
 ---
 
+# Question Cards
+
+<img width="1200px" height="1200px" src={layout_annotated} />
+
+Need to make API calls
+
+---
+
 # Install axios
 
 ```bash
@@ -1131,4 +1149,51 @@ Axios is a promise-based HTTP client
 
 ---
 
-src/Questions/Questions.js
+<CodeSurfer>
+
+```jsx file=./frontend_src/Questions/Questions.js title="src/Questions/Questions.js"
+```
+
+```jsx file=./frontend_src/Questions/Questions.js 8:17 subtitle="New Question Card"
+```
+
+```jsx file=./frontend_src/Questions/Questions.js 2,9,17 subtitle="react-router link"
+```
+
+```jsx file=./frontend_src/Questions/Questions.js 20:32 subtitle="Question Card"
+```
+
+```jsx file=./frontend_src/Questions/Questions.js subtitle="Parameter: question" 20[23:30],21[13:23],22[28:38],24[48:63],26[39:52],27[37:56]
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx file=./frontend_src/Questions/Questions.js subtitle="Parameter: question" title="Retrieve Questions"
+```
+
+```jsx file=./frontend_src/Questions/Questions.js subtitle="Parameter: question" 43:48 title="Retrieve Questions"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurferColumns>
+
+<Step>
+
+```js file=./frontend_src/constants.js 1 title="src/constants.js"
+```
+
+```js file=./frontend_src/Questions/Questions.js 5 title="src/Questions/Questions.js"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+
