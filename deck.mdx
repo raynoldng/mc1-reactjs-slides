@@ -153,7 +153,7 @@ class Greeting extends React.Component {
 
 <CodeSurfer>
 
-```jsx title="Passing props for functionl components"
+```jsx title="Passing props for functional components"
 class App extends Component {
   render() {
     const greeting = 'Welcome to React';
@@ -365,10 +365,10 @@ const Greeting = ({ greeting, isShow }) =>
 
 <CodeSurfer>
 
-```jsx file=./components/Counter.js
+```jsx file=./components/Counter.js title="Counter Example"
 ```
 
-```jsx file=./components/Counter.js 4:6,17
+```jsx file=./components/Counter.js 4:6,17 subtitle="Counter state"
 ```
 
 ```jsx file=./components/Counter.js 12:16 subtitle="Styling react compoments with inline CSS"
@@ -1072,21 +1072,20 @@ export default App;
 
 ---
 
+import devtools from './images/devtools.png'
+
+<img width="1250px" height="1250px" src={devtools} />
+
+--- 
 import fail_layout from './images/failed-layout.png'
 
-<img width="750px" height="750px" src={fail_layout} />
+<img width="1250px" height="1250px" src={fail_layout} />
 
 ---
 
-import devtools from './images/devtools.png'
-
-<img width="750px" height="750px" src={devtools} />
-
---- 
-
 import fixed_layout from './images/fixed-layout.png'
 
-<img width="750px" height="750px" src={fixed_layout} />
+<img width="1250px" height="1250px" src={fixed_layout} />
 
 ---
 
@@ -1172,10 +1171,10 @@ Axios is a promise-based HTTP client
 
 <CodeSurfer>
 
-```jsx file=./frontend_src/Questions/Questions.js subtitle="Parameter: question" title="Retrieve Questions"
+```jsx file=./frontend_src/Questions/Questions.js title="Retrieve Questions"
 ```
 
-```jsx file=./frontend_src/Questions/Questions.js subtitle="Parameter: question" 43:48 title="Retrieve Questions"
+```jsx file=./frontend_src/Questions/Questions.js subtitle="make GET call" 43:48 title="Retrieve Questions"
 ```
 
 </CodeSurfer>
@@ -1196,4 +1195,220 @@ Axios is a promise-based HTTP client
 
 </CodeSurferColumns>
 
+---
 
+# Component LifeCycle
+
+import lifecycle from './images/lifecycle.png'
+
+<img width="500px" height="500px" src={lifecycle} />
+
+tldr; Make your API calls in `componentDidMount()`
+
+---
+
+<CodeSurfer>
+
+```jsx file=./frontend_src/Questions/Questions.js 54:58 title="Rendering Question Cards"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx title="Use your new compoment"
+import React, { Component } from 'react';
+import NavBar from './NavBar/NavBar';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <p>Work in progress.</p>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+```jsx title="Use your new compoment"
+import React, { Component } from 'react';
+import NavBar from './NavBar/NavBar';
+import Questions from './Questions/Questions';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <Questions/>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+</CodeSurfer>
+
+---
+
+# Routing Users with React Router
+
+- handles updating the URL when certain things are clicked on
+- updating the view according to the URL
+
+---
+
+<CodeSurfer>
+
+```jsx title="Before Routing"
+import React, { Component } from 'react';
+import NavBar from './NavBar/NavBar';
+import Questions from './Questions/Questions';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <Questions/>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+```jsx title="After Routing" 
+import React, { Component } from 'react';
+import {Route, withRouter} from 'react-router-dom';
+import NavBar from './NavBar/NavBar';
+import Question from './Question/Question';
+import Questions from './Questions/Questions';
+import NewQuestion from './NewQuestion/NewQuestion';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <Route exact path='/' component={Questions}/>
+        <Route exact path='/question/:questionId' component={Question}/>
+        <Route path='/new-question'
+                      component={NewQuestion} />
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);
+```
+
+```jsx subtitle="Page for individual questions"  14
+import React, { Component } from 'react';
+import {Route, withRouter} from 'react-router-dom';
+import NavBar from './NavBar/NavBar';
+import Question from './Question/Question';
+import Questions from './Questions/Questions';
+import NewQuestion from './NewQuestion/NewQuestion';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <Route exact path='/' component={Questions}/>
+        <Route exact path='/question/:questionId' component={Question}/>
+        <Route path='/new-question'
+                      component={NewQuestion} />
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);
+```
+
+```jsx subtitle="Path"  14[28:48]
+import React, { Component } from 'react';
+import {Route, withRouter} from 'react-router-dom';
+import NavBar from './NavBar/NavBar';
+import Question from './Question/Question';
+import Questions from './Questions/Questions';
+import NewQuestion from './NewQuestion/NewQuestion';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <Route exact path='/' component={Questions}/>
+        <Route exact path='/question/:questionId' component={Question}/>
+        <Route path='/new-question'
+                      component={NewQuestion} />
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);
+```
+
+```jsx subtitle="Parameter that Question receives in props"  14[38:48]
+import React, { Component } from 'react';
+import {Route, withRouter} from 'react-router-dom';
+import NavBar from './NavBar/NavBar';
+import Question from './Question/Question';
+import Questions from './Questions/Questions';
+import NewQuestion from './NewQuestion/NewQuestion';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar/>
+        <Route exact path='/' component={Questions}/>
+        <Route exact path='/question/:questionId' component={Question}/>
+        <Route path='/new-question'
+                      component={NewQuestion} />
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx title="Routing Users with React Router" subtitle="src/Question/Question.js" file=./frontend_src/Question/Question.js
+```
+
+```jsx title="Routing Users with React Router" subtitle="src/Question/Question.js" file=./frontend_src/Question/Question.js 17:27
+```
+
+```jsx file=./frontend_src/Question/Question.js 22 subtitle="react-router-dom passes in a prop called match into every route that is rendered"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```jsx file=./frontend_src/Question/Question.js title="src/Question/Question.js"
+```
+
+</CodeSurfer>
