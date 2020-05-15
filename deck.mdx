@@ -30,7 +30,7 @@ Everything in React is a Component
 
 import everything_is_a_component from './images/everything-is-a-component.png'
 
-<img width="500px" height="500px" src={everything_is_a_component} />
+<img width="1000px" height="1000px" src={everything_is_a_component} />
 
 ---
 
@@ -103,8 +103,8 @@ class App extends React.Component {
 
 class Greeting extends React.Component {
   render() {
-    const greeting = 'Welcome to React';
-    return <h1>{greeting}</h1>;
+    const message = 'Welcome to React';
+    return <h1>{message}</h1>;
   }
 }
 ```
@@ -122,8 +122,8 @@ class App extends React.Component {
 
 class Greeting extends React.Component {
   render() {
-    const greeting = 'Welcome to React';
-    return <h1>{greeting}</h1>;
+    const message = 'Welcome to React';
+    return <h1>{message}</h1>;
   }
 }
 ```
@@ -131,10 +131,10 @@ class Greeting extends React.Component {
 ```jsx subtitle="After"
 class App extends React.Component {
   render() {
-    const greeting = 'Welcome to React';
+    const message = 'Welcome to React';
     return (
       <div>
-        <Greeting greeting={greeting} />
+        <Greeting greeting={message} />
       </div>
     );
   }
@@ -156,11 +156,11 @@ class Greeting extends React.Component {
 ```jsx title="Passing props for functional components"
 class App extends Component {
   render() {
-    const greeting = 'Welcome to React';
+    const message = 'Welcome to React';
  
     return (
       <div>
-        <Greeting greeting={greeting} />
+        <Greeting greeting={message} />
       </div>
     );
   }
@@ -197,15 +197,15 @@ Source: https://www.robinwieruch.de/react-pass-props-to-component
 
 ## Props are read only and do not make components interactive. Need state for that
 
-import Counter from './components/Counter'
-
-<Counter />
-
----
-
 import StatefulApp from './components/part1/StatefulApp'
 
 <StatefulApp />
+
+---
+
+import Counter from './components/Counter'
+
+<Counter />
 </Content>
 
 ---
@@ -222,10 +222,10 @@ class StatefulApp extends React.Component {
     };
   }
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
  
         <button onClick={
           () => this.setState(state => ({ isShow: !state.isShow }))
@@ -250,10 +250,10 @@ class StatefulApp extends React.Component {
     };
   }
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
  
         <button onClick={
           () => this.setState(state => ({ isShow: !state.isShow }))
@@ -278,10 +278,10 @@ class StatefulApp extends React.Component {
     };
   }
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
  
         <button onClick={
           () => this.setState(state => ({ isShow: !state.isShow }))
@@ -306,10 +306,10 @@ class StatefulApp extends React.Component {
     };
   }
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
  
         <button onClick={
           () => this.setState(state => ({ isShow: !state.isShow }))
@@ -324,7 +324,7 @@ class StatefulApp extends React.Component {
 const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 ```
 
-```jsx title="You can pass state as props to children" 19,29,30
+```jsx title="You can pass state as props to children" 19,31,32
 class StatefulApp extends React.Component {
   constructor(props) {
     super(props);
@@ -339,11 +339,11 @@ class StatefulApp extends React.Component {
   };
  
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
  
     return (
       <div>
-        <Greeting greeting={greeting} isShow={this.state.isShow} />
+        <Greeting greeting={message} isShow={this.state.isShow} />
  
         <button onClick={
           () => this.setState(state => ({ isShow: !state.isShow }))
@@ -365,7 +365,7 @@ const Greeting = ({ greeting, isShow }) =>
 
 <CodeSurfer>
 
-```jsx file=./components/Counter.js title="Counter Example"
+```jsx file=./components/Counter.js title="Increment Counter Example"
 ```
 
 ```jsx file=./components/Counter.js 4:6,17 subtitle="Counter state"
@@ -383,7 +383,7 @@ const Greeting = ({ greeting, isShow }) =>
 <Steps>
 NO  😭 , there is no way to pass props from a child to a parent component
 
-Lets try to add a Button component for toggling
+Lets try to add a Button component for toggling (the child need to pass data to the parent)
 </Steps>
 
 ---
@@ -400,10 +400,10 @@ class StatefulApp extends React.Component {
     };
   }
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
  
         <button onClick={
           () => this.setState(state => ({ isShow: !state.isShow }))
@@ -422,10 +422,10 @@ const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 class StatefulApp extends React.Component {
   constructor(props) {
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {isShow ? <Greeting greeting={greeting} /> : null}
+        {isShow ? <Greeting greeting={message} /> : null}
         <Button />
       </div>
     );
@@ -460,10 +460,10 @@ const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 ```jsx subtitle="❌ Button cannot pass isShow as props to App ❌"  6[10:15],7[10:15]
 class StatefulApp extends React.Component {
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {isShow ? <Greeting greeting={greeting} /> : null}
+        {isShow ? <Greeting greeting={message} /> : null}
         <Button />
       </div>
     );
@@ -510,10 +510,10 @@ class StatefulApp extends React.Component {
     this.setState(state => ({ isShow: !state.isShow }));
   };
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
         <Button onClick={this.toggleShow} />
       </div>
     );
@@ -559,18 +559,18 @@ class StatefulApp extends React.Component {
     this.setState(state => ({ isShow: !state.isShow }));
   };
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
-        <Button onClick={this.toggleShow} />
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
+        <Button onClickHandler={this.toggleShow} />
       </div>
     );
   }
 }
 
-const Button = ({ onClick }) => (
-  <button onClick={onClick} type="button">
+const Button = ({ onClickHandler }) => (
+  <button onClick={onClickHandler} type="button">
     Toggle Show
   </button>
 );
@@ -588,10 +588,10 @@ const Greeting = ({ greeting }) => <h1>{greeting}</h1>;
 class StatefulApp extends React.Component {
   ...
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
         <Button onClick={this.toggleShow} />
       </div>
     );
@@ -609,18 +609,18 @@ const Button = ({ onClick }) => (
 class StatefulApp extends React.Component {
   ...
   render() {
-    const greeting = 'Now you see me';
+    const message = 'Now you see me';
     return (
       <div>
-        {this.state.isShow ? <Greeting greeting={greeting} /> : null}
+        {this.state.isShow ? <Greeting greeting={message} /> : null}
         <Button onClick={this.toggleShow}>Toggle Show</Button>
       </div>
     );
   }
 }
  
-const Button = ({ onClick, children }) => (
-  <button onClick={onClick} type="button">
+const Button = ({ onClickHandler, children }) => (
+  <button onClick={onClickHandler} type="button">
     {children}
   </button>
 );
@@ -630,9 +630,21 @@ const Button = ({ onClick, children }) => (
 
 ---
 
+# Prop Drilling
+
+import prop_drilling from './images/prop-drilling.png'
+
+<img width="1200px" height="1200px" src={prop_drilling} />
+
+<Notes>
+  Image source: https://medium.com/@nguyencaophung/react-from-prop-drilling-to-use-hook-to-pass-data-in-app-3e3caad6a65f
+</Notes>
+
+---
+
 <CodeSurfer>
 
-```jsx title="Passing Components as Props"
+```jsx title="Passing Components as Props" subtitle="Use regular props if passing more than one component"
 const User = ({ user }) => (
   <Profile user={user}>
     <AvatarRound user={user} />
@@ -642,6 +654,28 @@ const User = ({ user }) => (
 const Profile = ({ user, children }) => (
   <div className="profile">
     <div>{children}</div>
+    <div>
+      <p>{user.name}</p>
+    </div>
+  </div>
+);
+ 
+const AvatarRound = ({ user }) => (
+  <img className="round" alt="avatar" src={user.avatarUrl} />
+);
+```
+
+```jsx subtitle="Use regular props if passing more than one component"
+const User = ({ user }) => (
+  <Profile
+    user={user}
+    avatar={<AvatarRound user={user} />}
+  />
+);
+ 
+const Profile = ({ user, avatar }) => (
+  <div className="profile">
+    <div>{avatar}</div>
     <div>
       <p>{user.name}</p>
     </div>
@@ -753,19 +787,6 @@ const BiographyFat = ({ user }) => (
 
 </CodeSurfer>
 
-
----
-
-# Prop Drilling
-
-import prop_drilling from './images/prop-drilling.png'
-
-<img width="1200px" height="1200px" src={prop_drilling} />
-
-<Notes>
-  Image source: https://medium.com/@nguyencaophung/react-from-prop-drilling-to-use-hook-to-pass-data-in-app-3e3caad6a65f
-</Notes>
-
 ---
 
 # Use Context to Share Data
@@ -786,6 +807,8 @@ import context_to_share_data from './images/context-to-share-data.png'
 <a href="https://ancient-castle-17079.herokuapp.com/" target="_blank">Working Demo</a>
 
 (Based on [React Tutorial: Building and Securing Your First App](https://auth0.com/blog/react-tutorial-building-and-securing-your-first-app/#What-You-Will-Build-with-React))
+
+[CodeSandbox](https://codesandbox.io/s/github/raynoldng/mc1-reactjs-frontend)
 
 ---
 
@@ -935,7 +958,7 @@ export default App;
 
 <CodeSurfer>
 
-```jsx title="Import BrowserRouter" 
+```jsx title="Import BrowserRouter for index.js" 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
@@ -1181,6 +1204,16 @@ Axios is a promise-based HTTP client
 
 ---
 
+# Component LifeCycle
+
+import lifecycle from './images/lifecycle.png'
+
+<img width="1000px" height="1000px" src={lifecycle} />
+
+tldr; Make your API calls in `componentDidMount()`
+
+---
+
 <CodeSurferColumns>
 
 <Step>
@@ -1194,16 +1227,6 @@ Axios is a promise-based HTTP client
 </Step>
 
 </CodeSurferColumns>
-
----
-
-# Component LifeCycle
-
-import lifecycle from './images/lifecycle.png'
-
-<img width="1000px" height="1000px" src={lifecycle} />
-
-tldr; Make your API calls in `componentDidMount()`
 
 ---
 
@@ -1475,7 +1498,7 @@ export default withRouter(App);
 - Sort cards by number of votes in descending order
 
 [Working Demo](https://qna-solution.herokuapp.com)
-[CodeSandbox](https://codesandbox.io/s/github/raynoldng/mc1-reactjs-frontend)
+[CodeSandbox](https://codesandbox.io/s/github/raynoldng/mc1-reactjs-frontend/tree/homework)
 
 ---
 
@@ -1487,6 +1510,10 @@ If working locally, git clone or download zip (homework branch)
 - [Frontend](https://github.com/raynoldng/mc1-reactjs-frontend/tree/homework)
 
 Else you can work on it online with [CodeSandbox](https://codesandbox.io/s/github/raynoldng/mc1-reactjs-frontend/tree/homework)
+
+Hint: 
+- only need to edit `src/Questions/Questions.js`
+- this [stackoverflow](https://stackoverflow.com/questions/50058827/react-how-to-rerender-component-after-post-data-to-database-mongodb) post might be useful.....
 
 ---
 
