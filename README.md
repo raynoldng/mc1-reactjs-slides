@@ -1,6 +1,17 @@
-# MDX Deck + Code Surfer template
+# [Orbital 2020] ReactJS Workshop Slides
 
-This project was generated with the `npm init code-surfer-deck` command.
+Slides for NUS Orbital ReactJS workshop 2020. 
+
+You can see the slides live [here](https://vigorous-boyd-15ab89.netlify.app)
+
+Based on the following sources:
+- https://www.freecodecamp.org/news/learn-react-js-in-5-minutes-526472d292f4/
+- https://www.robinwieruch.de/react-pass-props-to-component
+- https://auth0.com/blog/react-tutorial-building-and-securing-your-first-app/
+
+Related Repos:
+- https://github.com/raynoldng/mc1-reactjs-frontend
+- https://github.com/raynoldng/mc1-reactjs-backend
 
 ## Development
 
