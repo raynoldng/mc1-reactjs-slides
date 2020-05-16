@@ -19,8 +19,29 @@ Quick start guide to ReactJS and building frontend applications
 # Prerequisites
 
 [JavaScript Primer](https://reacttraining.com/blog/javascript-the-react-parts/) to get caught up on modern JavaScript
+- arrow functions: `(param1, param2, …, paramN) => { statements } `
+- destructuring assignment: `const [greeting, ...rest] = ["Hello", "I" , "am", "Sarah"];`
+- spread operators: `const mergedObj = { ...obj1, ...obj2 };`
 
 [Learn HTML in X Minutes](https://learnxinyminutes.com/docs/html/) understand basic HTML syntax
+- Tags
+- HTML elements (e.g. button, forms, click handlers)
+
+---
+
+# Making the most of this workshop
+
+- Focus on the high level idea and understanding the code
+- Don't worry about the syntax
+- Goal: understand key concepts of ReactJS and understanding ReactJS codebases
+
+<Notes>
+
+Best way to approach this workshop is to develop a high level understanding of how react projects are written. 
+
+Not so much on writting working react code from scratch. So best to understand the code that I am showing so that 
+
+</Notes>
 
 ---
 
@@ -31,6 +52,15 @@ Everything in React is a Component
 import everything_is_a_component from './images/everything-is-a-component.png'
 
 <img width="1000px" height="1000px" src={everything_is_a_component} />
+
+<Notes>
+
+- an address form can be broken down into compoments
+- each compoment has a particular function
+- each compoment has to talk to each other, like the ValidationResult only appears because of 
+data from the address input
+
+</Notes>
 
 ---
 
@@ -49,6 +79,14 @@ class Hello extends React.Component {
 ```
 
 </CodeSurfer>
+
+<Notes>
+
+- Here is a simple example of a component implemented as a JS class that returns the text
+"Hello World" in large font, H1 tags. 
+- This slides where uses react and this is an actual react component
+
+</Notes>
 
 ---
 
